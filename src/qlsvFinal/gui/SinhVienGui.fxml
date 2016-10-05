@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?language javascript?>
+
+<?import qlsvFinal.dto.SinhVienDto?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import fxmltableview.*?>
+<?import javafx.collections.*?>
+
+<GridPane fx:controller="qlsvFinal.bus.SinhVienBus" hgap="10.0" vgap="30.0" xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #FFF">
+	<padding>
+		<Insets bottom="10.0" left="30.0" right="20.0" top="30.0"/>
+	</padding>
+	<children>
+		<Pane style="-fx-border-color: #f2f2f2; -fx-border-width: 1; -fx-background-radius: 6;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+	        <children>
+	        	<Label layoutX="5.0" layoutY="-8.0" style="-fx-background-color: #FFF; -fx-font: 15 Arial; -fx-font-weight:bold ; -fx-text-fill: #660000;" text="Thông tin sinh viên">
+		        </Label>
+	        	<GridPane hgap="30.0" vgap="20.0">
+	        		<padding>
+					    <Insets bottom="10.0" left="30.0" right="20.0" top="30.0"/>
+					</padding>
+	        		<Label text="Mã sinh viên: " style="-fx-font: 15 Arial;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+					</Label>
+					<TextField fx:id="txtMaSinhVien" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="350"> 
+					</TextField>
+
+					<Label text="Tên sinh viên: " style="-fx-font: 15 Arial;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+					</Label>
+					<TextField fx:id="txtTenSinhVien" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="350">
+					</TextField>
+
+					<Label text="Ngày sinh: " style="-fx-font: 15 Arial;" GridPane.columnIndex="0" GridPane.rowIndex="2">
+					</Label>
+					<DatePicker fx:id="dpNgaySinh" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="400">
+					</DatePicker>
+
+					<HBox GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2" spacing="50">
+						<padding>
+			                <Insets left="50.0"/>
+			            </padding>
+						<Button fx:id="btnThem" text="   Thêm   " onAction="#them" style="-fx-font: 14 Arial;" disable="true">
+						</Button>
+						<Button fx:id="btnLuu" text="    Lưu   " onAction="#luu" style="-fx-font: 14 Arial;" disable="true">
+						</Button>
+						<Button fx:id="btnSua" text="   Sửa   " onAction="#sua" style="-fx-font: 14 Arial;" disable="true">
+						</Button>
+						<Button fx:id="btnXoa" text="   Xóa   " onAction="#xoa" style="-fx-font: 14 Arial;" disable="true">
+						</Button>
+					</HBox>
+	      		</GridPane>
+	        </children>
+	    </Pane>
+
+		<Pane style="-fx-border-color: #f2f2f2; -fx-border-width: 1; -fx-background-radius: 30px; -fx-background-color: #FFFFFF" GridPane.columnIndex="0" GridPane.rowIndex="1" prefHeight="300">
+			<children>
+				<Label layoutX="5.0" layoutY="-8.0" style="-fx-background-color: #FFF; -fx-font: 15 Arial; -fx-font-weight: bold; -fx-text-fill: #660000;" text="Danh sách sinh viên">
+		        </Label>
+		        <GridPane prefHeight="300">
+		        	<padding>
+					    <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
+					</padding>
+		        	<TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="0" onMouseClicked="#handleMouseClick">
+					    <columns>
+					        <TableColumn fx:id="maSinhVienColumn" text="Mã sinh viên" style="-fx-font: 15 Arial;" prefWidth="200">
+					        	<cellValueFactory>
+					        		<PropertyValueFactory property="maSinhVien" />
+					        	</cellValueFactory>
+					        </TableColumn>
+					        <TableColumn fx:id="tenSinhVienColumn" text="Tên sinh viên" style="-fx-font: 15 Arial;" prefWidth="200">
+					        	<cellValueFactory>
+					        		<PropertyValueFactory property="tenSinhVien" />
+					        	</cellValueFactory>
+					        </TableColumn>
+					        <TableColumn fx:id="ngaySinhColumn" text="Ngày sinh" style=" -fx-font: 15 Arial;" prefWidth="200">
+					        	<cellValueFactory>
+					        		<PropertyValueFactory property="ngaySinh" />
+					        	</cellValueFactory>
+					        </TableColumn>
+					    </columns>     
+					</TableView>
+		        </GridPane>
+			</children>
+		</Pane>
+		
+		<HBox fx:id="hBoxOpenCSDL" GridPane.columnIndex="0" GridPane.rowIndex="2" visible="true">
+			<GridPane hgap="30">
+				<Button fx:id="btnOpenCSDL" text="   Mở CSDL   " onAction="#moCSDL" style="-fx-font: 14 Arial;" GridPane.columnIndex="0">
+				</Button>
+				<Button fx:id="btnTimKiem" text="   Tìm Kiếm   " onAction="#timkiem" style="-fx-font: 14 Arial;" GridPane.columnIndex="1" disable="true">
+				</Button>
+				<Button fx:id="btnHuy" text="    Hủy    " onAction="#huy" style="-fx-font: 14 Arial;" GridPane.columnIndex="2">
+				</Button>
+				<Button fx:id="btnThoat" text="   Thoát    " onAction="#thoat" style="-fx-font: 14 Arial;" GridPane.columnIndex="9">
+				</Button>	
+			</GridPane>		
+		</HBox>
+		
+	</children>
+</GridPane>
